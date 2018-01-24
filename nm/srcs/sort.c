@@ -6,39 +6,32 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 17:37:39 by amoinier          #+#    #+#             */
-/*   Updated: 2018/01/23 18:51:35 by amoinier         ###   ########.fr       */
+/*   Updated: 2018/01/24 16:14:26 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "nm.h"
 
-char 	**sort(char **array, int size)
+t_symbol 	*sort(t_symbol *symbols, t_symbol *new)
 {
-	int		i;
-	int		j;
-	int		indtmp;
-	char 	*tmp;
+	t_symbol *tmp;
 
-	i = 0;
-	while (i < size)
+	tmp = symbols;
+	while (tmp && tmp->name && ft_strcmp(tmp->name, new->name) < 0)
+		tmp = tmp->next;
+
+	if (tmp && tmp->prev)
+		new->prev = tmp->prev;
+	new->next = tmp;
+	if (tmp)
 	{
-		j = i + 1;
-		indtmp = -1;
-		while (j < size)
-		{
-			if (ft_strcmp(array[j], array[i]) < 0)
-			{
-				tmp = array[j];
-				indtmp = j;
-			}
-			j++;
-		}
-		if (indtmp != -1)
-		{
-			array[indtmp] = array[i];
-			array[i] = tmp;
-		}
-		i++;
+		if (tmp->prev)
+			tmp->prev->next = new;
+		tmp->prev = new;
 	}
-	return (array);
+	while (symbols->prev)
+	{
+		symbols = symbols->prev;
+	}
+	return (symbols);
 }

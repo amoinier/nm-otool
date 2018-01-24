@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 14:15:42 by amoinier          #+#    #+#             */
-/*   Updated: 2018/01/23 18:41:16 by amoinier         ###   ########.fr       */
+/*   Updated: 2018/01/24 13:13:42 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ int		main(int ac, char const **av)
 	if ((ptr = mmap(0, info.st_size, PROT_READ, MAP_PRIVATE, fd, 0)) == MAP_FAILED)
 		return error("can't malloc st_size");
 
-	create_symbols_list();
 	nm(ptr);
 
 	return 0;

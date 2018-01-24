@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 14:16:25 by amoinier          #+#    #+#             */
-/*   Updated: 2018/01/23 18:51:57 by amoinier         ###   ########.fr       */
+/*   Updated: 2018/01/24 16:30:23 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,10 @@
 
 typedef struct		s_symbol {
 	char			*name;
-	char			type;
-	unsigned int	value;
+	unsigned int	type;
+	uint64_t		value;
 	struct s_symbol	*next;
+	struct s_symbol	*prev;
 }					t_symbol;
 
 int			error(char *s);
@@ -46,9 +47,9 @@ void		get_string_array(int nsyms, int symoff, int stroff, char *ptr);
 
 
 
-char 		**sort(char **array, int size);
+t_symbol 	*sort(t_symbol *symbols, t_symbol *new);
 
-void		print_memory(unsigned int addr, int bit);
+char		*print_memory(uint64_t addr, int bit);
 
 
 #endif
