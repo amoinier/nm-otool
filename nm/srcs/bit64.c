@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 18:36:16 by amoinier          #+#    #+#             */
-/*   Updated: 2018/01/23 18:47:43 by amoinier         ###   ########.fr       */
+/*   Updated: 2018/01/24 16:47:30 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void		handle64(char *ptr)
 		if (lc->cmd == LC_SYMTAB)
 		{
 			sym = (struct symtab_command *)lc;
-			printf("nb of symbols: %d\n", sym->nsyms);
 			get_string_array(sym->nsyms, sym->symoff, sym->stroff, ptr);
 			break ;
 		}

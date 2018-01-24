@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/23 18:37:31 by amoinier          #+#    #+#             */
-/*   Updated: 2018/01/24 16:30:42 by amoinier         ###   ########.fr       */
+/*   Updated: 2018/01/24 18:26:48 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,11 @@ static void		print_output(t_symbol *symbols)
 	{
 		if (symbols->name && (symbols->name[0] == '_' || ft_strstr(symbols->name, "dyld")))
 		{
-			printf("%s %c %s\n", print_memory(symbols->value, SPACE_64), detect_type(symbols->type), symbols->name);
+			printf("%s %d(%d)(%d)(%d)(%d)(%d)(%d) %s\n", print_memory(symbols->value, SPACE_64), symbols->type, N_TYPE, N_PEXT, N_STAB, N_EXT, symbols->type & N_TYPE, symbols->sect, symbols->name);
 		}
 		symbols = symbols->next;
 	}
 }
-// static t_symbol	*add_new_symbol(t_symbol *symbols, t_symbol *new)
-// {
-//
-// }
 
 void				get_string_array(int nsyms, int symoff, int stroff, char *ptr)
 {
@@ -51,6 +47,7 @@ void				get_string_array(int nsyms, int symoff, int stroff, char *ptr)
 			tmp->name = ft_strdup(&stringtable[array[i].n_un.n_strx]);
 			tmp->value = array[i].n_value;
 			tmp->type = array[i].n_type;
+			tmp->sect = array[i].n_sect;
 			symbols = sort(symbols, tmp);
 		}
 		i++;

@@ -6,7 +6,7 @@
 /*   By: amoinier <amoinier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 14:16:25 by amoinier          #+#    #+#             */
-/*   Updated: 2018/01/24 16:30:23 by amoinier         ###   ########.fr       */
+/*   Updated: 2018/01/24 18:05:31 by amoinier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 typedef struct		s_symbol {
 	char			*name;
 	unsigned int	type;
+	unsigned int	sect;
 	uint64_t		value;
 	struct s_symbol	*next;
 	struct s_symbol	*prev;
